@@ -1,0 +1,48 @@
+{% load static %}
+<html>
+<body>
+    <link rel="stylesheet" type="text/css" href="{% static 'ongc/style.css' %}">
+<script type="text/javascript" src="{% static 'ongc/vueinclude.js' %}"></script>
+<div class="first">
+    <header>
+         <div id="h_div" >
+         <img src="{% static 'ongc/ongc_logo.png' %}"  align="left" width=100px  height=120px  border="dotted" />
+         <h1 style="font-size: 40px;" align="center">Corporate Seismic Data Repository System</h1>
+         <h2 style="font-size: 30px;" align="center">Oil And Natural Gas Coorporation</h2>
+          <img src="{% static 'ongc/adminimage.jpg' %}" align="right"/ width=70px height=70px style="margin-top: -160px; border-radius: 50%;">
+         <p align="right" style="margin-top: -80px; margin-right: 11px; font-size: 15px; font-weight: normal; color: white; ">Admin</p>
+         <br><br> 
+         </div>
+         <br>
+    </header>
+</div>
+<center>
+    <br>
+    <br>
+    <br>
+    <table>
+        {% for survey in all_survey %}
+        {% if survey.surveynumber == surveynumber %}
+        <tr>
+            <td class='bold'>Survey Name</td>
+            <td>{{ survey.surveyname }}</td>
+        </tr>
+        <tr>
+            <td class='bold'>Survey Number</td>
+            <td>{{ survey.surveynumber }}</td>
+        </tr>
+        <tr>
+            <td class='bold'>CPF Number</td>
+            <td>{{ survey.cpf}}</td>
+        </tr>
+        <tr>
+            <td class='bold'>Phone number</td>
+            <td>{{ survey.phoneno }}</td>
+        </tr>
+        {% elif forloop.last %}
+        {% endif %}
+        {% endfor %}
+    </table>
+</center>
+</body>
+</html>

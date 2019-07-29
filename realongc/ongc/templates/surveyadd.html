@@ -1,0 +1,89 @@
+{% load static %}
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'ongc/style.css' %}">
+<script type="text/javascript" src="{% static 'ongc/vueinclude.js' %}"></script>
+</head>
+<body>
+<div class="first">
+    <header>
+         <div id="h_div">
+         <img src="{% static 'ongc/ongc_logo.png' %}"  align="left" width=100px  height=120px  border="dotted" />
+         <h1 style="font-size: 40px;" align="center">Corporate Seismic Data Repository System</h1>
+         <h2 style="font-size: 30px;" align="center">Oil And Natural Gas Coorporation</h2>
+          <a href="/mainadmin"><img src="{% static 'ongc/adminimage.jpg' %}" align="right"/ width=70px height=70px style="margin-top: -160px; border-radius: 50%;"></a>
+         <p align="right" style="margin-top: -80px; margin-right: 11px; font-size: 15px; font-weight: normal; color: white; ">Admin</p>
+         <br><br> 
+         </div>
+         <br>
+    </header>
+   </div>
+  
+
+  <div id="container">
+    <ul>
+      <li>Add
+      <ul>
+        <li><a href="/survey_add">Survey</a></li>
+        <li><a href="/block_add">Block</a></li>
+        <li>Acquisition
+          <ul>
+            <li><a href="/acquisition_add">Acquisition</a></li>
+            <li><a href="/media_add">Media</a></li>
+          </ul></li>
+      </ul>
+    </li>
+      <li>View
+      <ul>
+        <li><a href="/surveyv">Survey</a></li>
+        <li><a href="/blockv">Block</a></li>
+        <li>Acquisition
+          <ul>
+            <li><a href="/acquisitionv">Acquisition</a></li>
+            <li><a href="/mediav">Media</a></li>
+          </ul></li>
+      </ul></li>
+      <li>Edit
+      <ul>
+        <li><a href="/surveye">Survey</a></li>
+        <li><a href="/blocke">Block</a></li>
+        <li>Acquisition
+          <ul>
+            <li><a href="/acquisitione">Acquisition</a></li>
+            <li><a href="/mediae">Media</a></li>
+          </ul></li>
+      </ul>
+    </li>
+    </ul>
+  </div>
+  <br>
+  <br>
+
+<form method="POST" id="survey" action="/survey_add">
+  {% csrf_token %}
+          <br>
+          
+        <p align="center" style="margin-left: 90px;"> <b><u> SURVEY </u></font></b></p>
+         <br>
+        <div id="login_form" align="center">
+<label for="name"> <b>Survey Name:</b></label>  
+   
+{{ form.surveyname}}
+         <br><br>
+<label for="lname"> <b>Survey Number:</b></label>
+{{ form.surveynumber}}
+         <br>
+   <br>
+
+<label for="cpf"> <b>CPF No. :</b></label>
+{{ form.cpf}}
+         <br><br>
+<label for="phone"> <b>Phone No. : </b></label>
+{{ form.phoneno}}
+<br><br>
+	<button style="margin-left: 90px;" type="click" name="b1" v-on:click="sur()"><b>Submit</b></button>
+            <br> 
+      </div>
+      </form>
+</body>
+</html>

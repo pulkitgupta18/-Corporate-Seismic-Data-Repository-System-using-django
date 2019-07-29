@@ -1,0 +1,57 @@
+{% load static %}
+<html>
+<body>
+    <link rel="stylesheet" type="text/css" href="{% static 'ongc/style.css' %}">
+<script type="text/javascript" src="{% static 'ongc/vueinclude.js' %}"></script>
+<div class="first">
+    <header>
+         <div id="h_div" >
+         <img src="{% static 'ongc/ongc_logo.png' %}"  align="left" width=100px  height=120px  border="dotted" />
+         <h1 style="font-size: 40px;" align="center">Corporate Seismic Data Repository System</h1>
+         <h2 style="font-size: 30px;" align="center">Oil And Natural Gas Coorporation</h2>
+          <img src="{% static 'ongc/adminimage.jpg' %}" align="right"/ width=70px height=70px style="margin-top: -160px; border-radius: 50%;">
+         <p align="right" style="margin-top: -80px; margin-right: 11px; font-size: 15px; font-weight: normal; color: white; ">Admin</p>
+         <br><br> 
+         </div>
+         <br>
+    </header>
+</div>
+<center>
+    <br>
+    <br>
+    <br>
+    <div>
+        {% for survey in all_survey %}
+        {% if survey.surveynumber == surveynumber %}
+        <form method="POST" id="survey" action="/survey_edit">
+        {% csrf_token %}
+          <br>
+           <p align="center" style="margin-left: 90px;"> <b><u> SURVEY </u></font></b></p>
+         <br>
+        <div id="login_form" align="center">
+<label for="name"> <b>Survey Name:</b></label>      
+    {{  form.surveyname  }}
+         <br><br>
+ <label for="name"> <b>Survey Number:</b></label>      
+     {{  form.surveynumber  }}
+          <br><br>      
+<label for="cpf"> <b>CPF No. :</b></label>
+{{  form.cpf  }}
+         <br><br>
+<label for="phone"> <b>Phone No. : </b></label>
+{{  form.phoneno  }}
+<br><br>
+    <button style="margin-left: 90px;" type="click" name="b1" v-on:click="sur()"><b>Submit</b></button>
+            <br> 
+      
+         
+         </div>
+
+      </form>
+        {% elif forloop.last %}
+        {% endif %}
+        {% endfor %}
+   
+</center>
+</body>
+</html>
